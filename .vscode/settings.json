@@ -4,6 +4,8 @@
         "iostream": "cpp",
         "deque": "cpp",
         "vector": "cpp",
-        "map": "cpp"
+        "map": "cpp",
+        "xstring": "cpp",
+        "utility": "cpp"
     }
 }

@@ -2,25 +2,43 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "compile",
+            "label": "Compile and Run with Input/Output Redirection",
             "type": "shell",
             "command": "g++",
             "args": [
-                "-std=c++17",
+                "${file}",
                 "-o",
-                "${fileBasenameNoExtension}",
-                "${file}"
+                "${fileBasenameNoExtension}.exe",
+                "&&",
+                "${fileBasenameNoExtension}.exe",
+                "<",
+                "${workspaceFolder}\\input.txt",
+                ">",
+                "${workspaceFolder}\\output.txt"
             ],
+            "presentation": {
+                "reveal": "always",
+                "panel": "shared"
+            },
             "group": {
                 "kind": "build",
-                "isDefault": false
+                "isDefault": true
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
             }
-        },
-        {
-            "label": "compile and run",
-            "type": "shell",
-            "command": "g++ -std=c++17 -o ${fileBasenameNoExtension}",
-            "group": "build"
         },
         {
             "type": "cppbuild",

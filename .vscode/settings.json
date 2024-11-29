@@ -7,6 +7,8 @@
         "map": "cpp",
         "xstring": "cpp",
         "utility": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "string": "cpp",
+        "algorithm": "cpp"
     }
 }

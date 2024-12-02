@@ -12,9 +12,9 @@
                 "&&",
                 "${fileBasenameNoExtension}.exe",
                 "<",
-                "${workspaceFolder}\\input.txt",
+                "${workspaceFolder}\\Input.txt",
                 ">",
-                "${workspaceFolder}\\output.txt"
+                "${workspaceFolder}\\Output.txt"
             ],
             "presentation": {
                 "reveal": "always",

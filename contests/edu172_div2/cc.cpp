@@ -61,10 +61,10 @@ void solve()
     ll n, k; cin >> n >> k;
     string s; cin >> s;
 
-    vector<int> ssum;
-    int s_sum = 0;
+    vector<ll> ssum;
+    ll s_sum = 0;
 
-    for(int i = n-1; i >=0; --i){
+    for(ll i = n-1; i >=0; --i){
         ssum.push_back(s_sum);
         if(s[i] == '1') s_sum++;
         else s_sum--;
@@ -72,10 +72,10 @@ void solve()
 
     sort(ssum.rbegin(), ssum.rend());
 
-    int p_sum = 0;
-    int res = -1;
+    ll p_sum = 0;
+    ll res = -1;
 
-    for(int i = 0; i<n-1; i++){
+    for(ll i = 0; i<n-1; i++){
         if(i < ssum.size()){
             p_sum += ssum[i];
             if(p_sum >= k){

@@ -1,62 +1,7 @@
-1
-8 4
-01110101
-#include <iostream>
-#include <vector>
-#include <algorithm>
-
-using namespace std;
-
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-    
-    int t;
-    cin >> t;
-
-    vector<int> results;
-
-    while (t--) {
-        int n, k;
-        cin >> n >> k;
-        
-        string s;
-        cin >> s;
-
-        vector<int> suffix_sums;
-        int s_sum = 0;
-
-        // Compute suffix sums
-        for (int p = n - 1; p >= 0; --p) {
-            suffix_sums.push_back(s_sum);
-            if (s[p] == '1') {
-                s_sum += 1;
-            } else {
-                s_sum -= 1;
-            }
-        }
-
-        sort(suffix_sums.rbegin(), suffix_sums.rend()); // Sort in descending order
-
-        int prefix_sum = 0;
-        int answer = -1;
-
-        for (int m = 2; m <= n; ++m) {
-            if (m - 2 < suffix_sums.size()) {
-                prefix_sum += suffix_sums[m - 2];
-                if (prefix_sum >= k) {
-                    answer = m;
-                    break;
-                }
-            }
-        }
-
-        results.push_back(answer);
-    }
-
-    for (const int& result : results) {
-        cout << result << "\n";
-    }
-
-    return 0;
-}
+6
+3 2
+3 3
+4 11
+4 6
+6 39
+7 34

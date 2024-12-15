@@ -9,6 +9,7 @@
         "utility": "cpp",
         "xtree": "cpp",
         "string": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "functional": "cpp"
     }
 }

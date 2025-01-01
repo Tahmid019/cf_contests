@@ -55,39 +55,37 @@ using namespace std;
     }    
 
 /*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
-void dfs(ll l, ll r, ll k, ll& cnt){
 
-    ll rng = r - l + 1;
 
-    if(rng < k) return;
-
-    ll m = (l+r)/2;
-
-    if(rng%2 == 0){
-        dfs(l, m, k , cnt);
-        dfs(m+1, r, k, cnt);
-        return;
+ll topDown(ll n, ll k, vector<ll>&  nos){
+    ll m = n, ans = n;
+    while( n >=k){
+        // cout << n << " " ;
+        m = n/2;
+        if(n & 1){
+            ans = m+1;
+            nos.push_back(ans);
+            // cout << ans << " ";
+        }else{
+            nos.push_back(m);
+            // cout << m << " ";
+        }
+        n /= 2;
     }
-
-    if((rng/2 < k)){
-        cnt+=m;
-        return;
-    }
-
-    cnt += m;
-
-    dfs(l, m-1, k, cnt);
-    dfs(m+1, r, k, cnt);
+    return ans;
 }
 
-
+//Tutorial Solution
 void solve(){
     ll n, k;
     cin >> n >> k;
-    ll cnt = 0;
-    dfs(1, n, k, cnt);
-    cout  << cnt<< endl;;
-
+    ll mul = n + 1, sum = 0, cur = 1;
+    while(n >= k){
+        if(n & 1) sum += cur;
+        n >>= 1;
+        cur <<= 1;
+    }
+    cout << mul * sum / 2 << endl;
 
 }
 

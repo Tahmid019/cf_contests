@@ -12,6 +12,7 @@
         "algorithm": "cpp",
         "functional": "cpp",
         "ios": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "format": "cpp"
     }
 }

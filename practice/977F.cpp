@@ -79,7 +79,34 @@ using namespace std;
 
 void solve()
 {
+    ll n;
+    cin >> n;
     
+    vll a(n);
+    map<ll, ll> dp;
+    ll _max = INT_MIN, curr;
+
+    for(ll i = 0; i< n;i++){
+        cin >> a[i];
+
+        dp[a[i]] = max(dp[a[i]], dp[a[i]-1] + 1);
+        if(dp[a[i]] >= _max){
+            _max = dp[a[i]];
+            curr = a[i];
+        }
+    }
+    cout << _max << endl;
+    vll res;
+    for(ll i = n-1; i>= 0; i--){
+        if(a[i] == curr){
+            res.eb(i+1);
+            curr--;
+        }
+    }
+    rforn(i, res.size()){
+        cout << res[i] << " ";
+    }
+    cout << endl;
 }
 
 int main()

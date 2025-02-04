@@ -79,7 +79,23 @@ using namespace std;
 
 void solve()
 {
+    ll n;
+    cin >> n;
     
+    ll c[150000] = {0};
+    forn(i,n){
+        ll x;
+        cin >> x;
+        c[x]++;
+    }
+
+    vll dp(150000,0);
+    dp[0] = 0;
+    dp[1] = c[1];
+    for(ll i = 2; i <= 100000; i++){
+        dp[i] = max(dp[i-1], c[i]*i + dp[i-2]);
+    }
+    cout << dp[100000] << endl;
 }
 
 int main()

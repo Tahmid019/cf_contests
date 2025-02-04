@@ -42,11 +42,6 @@ using namespace std;
 #define vpcll vector<pair<char, long long>>
 #define vpllc vector<pair<long long, char>>
 
-#define umll unordered_map<long long, long long>
-#define umlc unordered_map<long long, char>
-#define umlvll unordered_map<long long, vector<long long>>
-#define umlvc unorderd_map<long long, vecto<char>>
-
 #define forn(i,n) for(long long i = 0; i<n; i++)
 #define rforn(i,n) for(long long i = n-1; i>= 0; i--)
 #define rep(var, start, end) for(long long var = start; var < end; var++)
@@ -85,8 +80,7 @@ void solve()
 int main()
 {
     tahmid
-    ll tt = 1; 
-    // cin >> tt;
+    ll tt; cin >> tt;
     while(tt--)
     {
         solve();

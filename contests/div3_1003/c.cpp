@@ -87,38 +87,22 @@ void solve()
     inpur(a, n);
     vll b(m);
     inpur(b, m);
-    
-    vll res;
 
+    vll res;
     if(n == 1){
         cout << "YES" << endl;
         return;
     }
-    ll cnt = 0, idx = 0;
-    for(ll i = 1; i < n; i++){
-        if(a[i-1] <= a[i]){
-            res.pb(1);
-        }else{
-            res.pb(0);
-            idx = i;
-            cnt++;
+    for(ll i = 0; i< n-1; i++){
+        if(a[i] > a[i+1]) {
+            a[i] = b[0] - a[i];
+            if(a[i] > a[i+1] || (i > 0 && a[i-1] > a[i])){
+                cout << "NO" << endl;
+                return;
+            }
         }
     }
-
-    if(cnt > 1){
-        cout << "NO" << endl;
-        return;
-    }
-
-    if(a[idx-1] <= b[0] - a[idx]){
-        cout << "YES" << endl;
-        return;
-    }
-
-    cout << "NO" << endl;
-
-
-    
+    cout << "YES" << endl;
 }
 
 int main()

@@ -79,39 +79,38 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
-    ll b1 = b[0];
-    ll prev = -1e18;
 
-    for (int i = 0; i < n; i++) {
-        ll o1 = a[i];
-        ll o2 = b1 - a[i];
 
-        if (o1 >= prev && o2 >= prev) {
-            prev = min(o1, o2);
-        } else if (o1 >= prev) {
-            prev = o1;
-        } else if (o2 >= prev) {
-            prev = o2;
-        } else {
-            return false;
-        }
-    }
-
-    return true;
-}
 
 void solve()
 {   
-    int n, m;
-        cin >> n >> m;
-        vll a(n);
-        vll b(m);
+    ll n;
+    cin >> n;
+    
+    vll a(n+1, 0);
+    ll _max = INT_MIN;
+    umll b;
+    forn(i, n){
+        ll x; 
+        cin >> x;
 
-        for (ll& num : a) cin >> num;
-        for (ll& num : b) cin >> num;
+        b[x]++;
+        _max = max(_max, b[x]);
 
-        cout << (sdec(n, m, a, b) ? "YES" : "NO") << endl;
+    }
+
+    if(_max <= (n + 1)/2) {
+        if(b.size() == (n+1)/2){
+            cout << "YES" << endl;
+            return;
+        }
+        cout << "NO" << endl;
+    }else{
+        cout << "YES" << endl;
+    }
+
+    
+
 }
 
 int main()

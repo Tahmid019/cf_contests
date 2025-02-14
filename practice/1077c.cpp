@@ -79,8 +79,8 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
-    ll b1 = b[0];
+bool sdec(int n, int m, vector<long long>& a, vector<long long>& b, ll b1) {
+    // ll b1 = b[0];
     ll prev = -1e18;
 
     for (int i = 0; i < n; i++) {
@@ -101,24 +101,48 @@ bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
     return true;
 }
 
+
+
+
 void solve()
 {   
-    int n, m;
-        cin >> n >> m;
-        vll a(n);
-        vll b(m);
+    ll n;
+    cin >> n;
+    vll a(n);
+    
+    ll sum = 0;
+    umll freq;
 
-        for (ll& num : a) cin >> num;
-        for (ll& num : b) cin >> num;
+    for(ll i = 0; i < n; i++){
+        cin >> a[i];
+        sum += a[i];
+        freq[a[i]]++;
+    }
 
-        cout << (sdec(n, m, a, b) ? "YES" : "NO") << endl;
+    vll ans;
+    
+    for(ll i = 0; i < n; i++){
+        ll remSum = sum - a[i];
+
+        if (remSum % 2 == 0) {
+            ll y = remSum / 2;
+            
+            if (freq[y] > 0 && (y != a[i] || freq[y] > 1)) {
+                ans.pb(i + 1);
+            }
+        }
+    }
+    
+    cout << ans.size() << endl;
+    for (ll idx : ans) cout << idx << " ";
+    cout << endl;
 }
 
 int main()
 {
     tahmid
     ll tt = 1; 
-    cin >> tt;
+    // cin >> tt;
     while(tt--)
     {
         solve();

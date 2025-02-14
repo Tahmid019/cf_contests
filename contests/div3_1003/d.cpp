@@ -79,8 +79,8 @@ using namespace std;
 
 const ll MOD = 1e9 + 7;
 
-bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
-    ll b1 = b[0];
+bool sdec(int n, int m, vector<long long>& a, vector<long long>& b, ll b1) {
+    // ll b1 = b[0];
     ll prev = -1e18;
 
     for (int i = 0; i < n; i++) {
@@ -107,11 +107,15 @@ void solve()
         cin >> n >> m;
         vll a(n);
         vll b(m);
-
+        ll _max = INT_MIN;
         for (ll& num : a) cin >> num;
-        for (ll& num : b) cin >> num;
+        for (ll& num : b){
+            cin >> num;
+            _max = max(_max, num);
 
-        cout << (sdec(n, m, a, b) ? "YES" : "NO") << endl;
+        }
+
+        cout << (sdec(n, m, a, b, _max) ? "YES" : "NO") << endl;
 }
 
 int main()

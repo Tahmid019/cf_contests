@@ -77,41 +77,45 @@ using namespace std;
 
 /*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
 
-const ll MOD = 1e9 + 7;
+const ll MOD = 1e9;
 
-bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
-    ll b1 = b[0];
-    ll prev = -1e18;
 
-    for (int i = 0; i < n; i++) {
-        ll o1 = a[i];
-        ll o2 = b1 - a[i];
 
-        if (o1 >= prev && o2 >= prev) {
-            prev = min(o1, o2);
-        } else if (o1 >= prev) {
-            prev = o1;
-        } else if (o2 >= prev) {
-            prev = o2;
-        } else {
-            return false;
+bool ck(ll n){
+    while(n >0){
+        if((n%10)%7 == 0){
+            return true;
         }
     }
-
-    return true;
+    return false;
 }
 
 void solve()
 {   
-    int n, m;
-        cin >> n >> m;
-        vll a(n);
-        vll b(m);
+    ll n;
+    cin >> n;
+    
+    ll k = 0;
+    ll a = 10;
+    
+    if(ck(n)){
+        cout << 0 << endl;
+        return;
+    }
 
-        for (ll& num : a) cin >> num;
-        for (ll& num : b) cin >> num;
+    while(k < MOD){
+        k  = k*10 + 9;
+        ll t = n;
+        forn(j, 10){
+            t += k;
+            if(ck(t)){
+                a = min(a, j+1);
+            }
+        }
+    }
 
-        cout << (sdec(n, m, a, b) ? "YES" : "NO") << endl;
+    cout << a << endl;
+    
 }
 
 int main()

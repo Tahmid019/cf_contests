@@ -71,47 +71,34 @@ using namespace std;
         }                                   \
     } 
 
+#define MOD 1000000007
 
-
-
+template<typename T>
+inline T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
 /*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
 
-const ll MOD = 1e9 + 7;
 
-bool sdec(int n, int m, vector<long long>& a, vector<long long>& b) {
-    ll b1 = b[0];
-    ll prev = -1e18;
 
-    for (int i = 0; i < n; i++) {
-        ll o1 = a[i];
-        ll o2 = b1 - a[i];
 
-        if (o1 >= prev && o2 >= prev) {
-            prev = min(o1, o2);
-        } else if (o1 >= prev) {
-            prev = o1;
-        } else if (o2 >= prev) {
-            prev = o2;
-        } else {
-            return false;
-        }
-    }
-
-    return true;
-}
 
 void solve()
 {   
-    int n, m;
-        cin >> n >> m;
-        vll a(n);
-        vll b(m);
+    ll n;
+    cin >> n;
+    vll a(n), f(n,0);
+    inpur(a, n);
+    ll sum = 0;
+    sort(a.begin(), a.end());
+    for(ll i = 0; i < n; i += 2){
+        if(max(sum, a[i]) != max(sum, a[i+1])){
+            cout << "NO" << endl;
+            return;
+        }
+        sum = max(sum, a[i]) + 1;
+    }
+    cout << "YES" << endl;
 
-        for (ll& num : a) cin >> num;
-        for (ll& num : b) cin >> num;
-
-        cout << (sdec(n, m, a, b) ? "YES" : "NO") << endl;
 }
 
 int main()

@@ -19,6 +19,10 @@
         "list": "cpp",
         "xhash": "cpp",
         "xutility": "cpp",
-        "iterator": "cpp"
+        "iterator": "cpp",
+        "compare": "cpp",
+        "chrono": "cpp",
+        "limits": "cpp",
+        "unordered_map": "cpp"
     }
 }

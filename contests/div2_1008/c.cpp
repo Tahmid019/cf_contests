@@ -4,11 +4,10 @@
 */
 #include<bits/stdc++.h>
 
-
 using namespace std;
 
-#define tahmid                          \
-    ios_base::sync_with_stdio(false);   \
+#define tahmid \
+    ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 
 #define pb push_back
@@ -45,7 +44,7 @@ using namespace std;
 #define umll unordered_map<long long, long long>
 #define umlc unordered_map<long long, char>
 #define umlvll unordered_map<long long, vector<long long>>
-#define umlvc unorderd_map<long long, vecto<char>>
+#define umlvc unordered_map<long long, vector<char>>
 
 #define forn(i,n) for(long long i = 0; i<n; i++)
 #define rforn(i,n) for(long long i = n-1; i>= 0; i--)
@@ -57,40 +56,60 @@ using namespace std;
 #define apriority priority_queue<long long, vector<long long>, greater<long long>>
 #define dpriority priority_queue<long long>
 
-#define inpur(var, n)               \
+#define inpur(var, n) \
     for(long long i = 0; i<n ; i++) \
-    {                               \
-        cin >> var[i];              \
-    } 
+    { \
+        cin >> var[i]; \
+    }
 
-#define matin(var, n,m)                       \
-    for(long long i = 0; i<n ; i++)         \
-    {                                       \
-        for(long long j = 0; j<m; j++){     \
-            cin >> var[i][j];               \
-        }                                   \
-    } 
+#define matin(var, n, m) \
+    for(long long i = 0; i<n ; i++) \
+    { \
+        for(long long j = 0; j<m; j++){ \
+            cin >> var[i][j]; \
+        } \
+    }
 
 #define MOD 1000000007
 
 template<typename T>
 inline T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
-/*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
-
-
-
-
+/*======================================= TEMPLATE ENDS =======================================*/
 
 void solve()
 {   
+    ll n;
+    cin >> n;
+    vll a(2*n);
+    inpur(a, 2*n);
+
+    sort(a.begin(), a.end(), greater<long long>());
+    ll l = a[0] - a[1], r = 0;
+    for( ll i = 2; i < 2*n; i+=2) {
+        r += a[i] - a[i+1];
+    }
+    // cout << l << "===" << r << endl;
+    if(l+r < a[0]) {
+        cout << l+r << " ";
+        for(ll i = 0; i < 2*n; i+=2) {
+            cout << a[i] << " " << a[i+1] << " ";
+        }
+        cout << endl;
+    }else{
+        cout << a[0] << " " << l+a[1]<< " " << a[1] << " ";
+        for( ll i = 2; i < 2*n; i+=2) {
+            cout << a[i] << " " << a[i+1] << " ";
+        }
+        cout << endl;
+    }
     
 }
 
 int main()
 {
     tahmid
-    ll tt = 1; 
+    ll tt = 1;
     cin >> tt;
     while(tt--)
     {

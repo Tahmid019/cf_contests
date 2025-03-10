@@ -4,11 +4,10 @@
 */
 #include<bits/stdc++.h>
 
-
 using namespace std;
 
-#define tahmid                          \
-    ios_base::sync_with_stdio(false);   \
+#define tahmid \
+    ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 
 #define pb push_back
@@ -45,7 +44,7 @@ using namespace std;
 #define umll unordered_map<long long, long long>
 #define umlc unordered_map<long long, char>
 #define umlvll unordered_map<long long, vector<long long>>
-#define umlvc unorderd_map<long long, vecto<char>>
+#define umlvc unordered_map<long long, vector<char>>
 
 #define forn(i,n) for(long long i = 0; i<n; i++)
 #define rforn(i,n) for(long long i = n-1; i>= 0; i--)
@@ -57,40 +56,75 @@ using namespace std;
 #define apriority priority_queue<long long, vector<long long>, greater<long long>>
 #define dpriority priority_queue<long long>
 
-#define inpur(var, n)               \
+#define inpur(var, n) \
     for(long long i = 0; i<n ; i++) \
-    {                               \
-        cin >> var[i];              \
-    } 
+    { \
+        cin >> var[i]; \
+    }
 
-#define matin(var, n,m)                       \
-    for(long long i = 0; i<n ; i++)         \
-    {                                       \
-        for(long long j = 0; j<m; j++){     \
-            cin >> var[i][j];               \
-        }                                   \
-    } 
+#define matin(var, n, m) \
+    for(long long i = 0; i<n ; i++) \
+    { \
+        for(long long j = 0; j<m; j++){ \
+            cin >> var[i][j]; \
+        } \
+    }
 
 #define MOD 1000000007
 
 template<typename T>
 inline T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
-/*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
+/*======================================= TEMPLATE ENDS =======================================*/
+
+void fun(vll& a, unordered_set<ll>& pres, ll idx, ll curr, ll sgn, set<ll>& seen) {
+    
+    cout << curr << " ";
+    if(curr <= 0) return;
+
+    if(pres.find(curr) == pres.end()) {
+        cout << curr << endl;
+        return;
+    }
+
+    if(seen.find(curr) != seen.end()) return;
+    seen.insert(curr);
+
+    if(idx < a.size()){
+        fun(a, pres, idx+1, curr + sgn*a[idx], -sgn, seen);
+    }
 
 
-
-
+}
 
 void solve()
 {   
-    
+    ll n;
+    cin >> n;
+    vll a(2*n);
+    ll idx = 0;
+    forn(i, n) {
+        cin >> a[idx++];
+        cin >> a[idx++];
+    }
+
+
+    unordered_set<ll> pres(a.begin(), a.end());
+    set<ll> seen;
+
+    sort(a.begin(), a.end(), greater<ll>());
+    fun(a, pres, 1, a[0], -1, seen);
+
+    // cout << s << endl;
+    // cout << endl;
+    // for()
+
 }
 
 int main()
 {
     tahmid
-    ll tt = 1; 
+    ll tt = 1;
     cin >> tt;
     while(tt--)
     {

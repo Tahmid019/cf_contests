@@ -4,11 +4,10 @@
 */
 #include<bits/stdc++.h>
 
-
 using namespace std;
 
-#define tahmid                          \
-    ios_base::sync_with_stdio(false);   \
+#define tahmid \
+    ios_base::sync_with_stdio(false); \
     cin.tie(NULL);
 
 #define pb push_back
@@ -45,7 +44,7 @@ using namespace std;
 #define umll unordered_map<long long, long long>
 #define umlc unordered_map<long long, char>
 #define umlvll unordered_map<long long, vector<long long>>
-#define umlvc unorderd_map<long long, vecto<char>>
+#define umlvc unordered_map<long long, vector<char>>
 
 #define forn(i,n) for(long long i = 0; i<n; i++)
 #define rforn(i,n) for(long long i = n-1; i>= 0; i--)
@@ -57,40 +56,52 @@ using namespace std;
 #define apriority priority_queue<long long, vector<long long>, greater<long long>>
 #define dpriority priority_queue<long long>
 
-#define inpur(var, n)               \
+#define inpur(var, n) \
     for(long long i = 0; i<n ; i++) \
-    {                               \
-        cin >> var[i];              \
-    } 
+    { \
+        cin >> var[i]; \
+    }
 
-#define matin(var, n,m)                       \
-    for(long long i = 0; i<n ; i++)         \
-    {                                       \
-        for(long long j = 0; j<m; j++){     \
-            cin >> var[i][j];               \
-        }                                   \
-    } 
+#define matin(var, n, m) \
+    for(long long i = 0; i<n ; i++) \
+    { \
+        for(long long j = 0; j<m; j++){ \
+            cin >> var[i][j]; \
+        } \
+    }
 
 #define MOD 1000000007
 
 template<typename T>
 inline T gcd(T a, T b) { return b == 0 ? a : gcd(b, a % b); }
 
-/*======================================= TEMPLATE ENDS ============================================================================================================================================================================================================================================================================================*/
-
-
-
-
+/*======================================= TEMPLATE ENDS =======================================*/
 
 void solve()
 {   
+    ll n, x, k;
+    cin >> n >> x >> k;
+    string s;
+    cin >> s;
+
+    ll cnt = 0;
+    ll a = 0, b = 0;
+    for(ll i = 0; i< n;i++ ){
+        cnt += (s[i] == 'R') ? 1 : -1;
+
+        if(cnt == -x && !a) a = i+1;
+        if(!cnt && !b) b = i+1;
+    }
+
+    cout << (a ? (b ? (k - a) / b  : 0) + 1: 0) << endl;
+    
     
 }
 
 int main()
 {
     tahmid
-    ll tt = 1; 
+    ll tt = 1;
     cin >> tt;
     while(tt--)
     {

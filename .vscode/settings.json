@@ -23,6 +23,10 @@
         "compare": "cpp",
         "chrono": "cpp",
         "limits": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "cmath": "cpp",
+        "queue": "cpp",
+        "ranges": "cpp",
+        "span": "cpp"
     }
 }
